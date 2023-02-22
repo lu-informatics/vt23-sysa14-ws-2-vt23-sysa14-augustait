@@ -9,40 +9,122 @@ import javax.swing.JTabbedPane;
 import javax.swing.JComboBox;
 import java.awt.Font;
 import javax.swing.JButton;
+import javax.swing.JTextArea;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class ApplicationWs extends JFrame {
 
-	private JPanel contentPane;
-
 	
-	public ApplicationWs() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 633, 418);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+	private JFrame testFrame;
+	private JTabbedPane tabbedPane;
+	private JPanel panelView; 
+	private JPanel panelFind;
+	private JButton btnSelectAll;
+	private JComboBox comboBoxViewAll;
+	private JTextArea textAreaViewAll;
+	private ControllerWS controllerWS;
+	
+	
 
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
+	public ApplicationWs() {
 		
-		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(0, 0, 617, 379);
-		contentPane.add(tabbedPane);
+		initialize();
+	}
+	
+	public void initialize() {
+		testFrame = new JFrame();
+		testFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		testFrame.setBounds(100, 100, 633, 418);
+		testFrame.getContentPane().setLayout(null);
+		testFrame.setVisible(true);
 		
-		JPanel panel = new JPanel();
-		tabbedPane.addTab("View", null, panel, null);
-		panel.setLayout(null);
+		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane.setBounds(10, 0, 607, 379);
+		testFrame.getContentPane().add(tabbedPane);
 		
-		JComboBox comboBoxViewAllInfo = new JComboBox();
-		comboBoxViewAllInfo.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		comboBoxViewAllInfo.setBounds(198, 228, 167, 22);
-		panel.add(comboBoxViewAllInfo);
+		panelView = new JPanel();
+		tabbedPane.addTab("View", null, panelView, null);
+		panelView.setLayout(null);
 		
-		JButton btnSelectAllws = new JButton("SELECT");
-		btnSelectAllws.setBounds(239, 294, 89, 23);
-		panel.add(btnSelectAllws);
+		btnSelectAll = new JButton("SELECT");
+		btnSelectAll.setBounds(163, 166, 89, 23);
+		panelView.add(btnSelectAll);
 		
-		JPanel panel_1 = new JPanel();
-		tabbedPane.addTab("New tab", null, panel_1, null);
-		panel_1.setLayout(null);
+		comboBoxViewAll = new JComboBox();
+		comboBoxViewAll.setBounds(140, 133, 131, 22);
+		panelView.add(comboBoxViewAll);
+		
+		textAreaViewAll = new JTextArea();
+		textAreaViewAll.setBounds(10, 24, 409, 98);
+		panelView.add(textAreaViewAll);
+		
+		panelFind = new JPanel();
+		tabbedPane.addTab("Find", null, panelFind, null);
+		panelFind.setLayout(null);
+	}
+
+	public JFrame getTestFrame() {
+		return testFrame;
+	}
+
+	public void setTestFrame(JFrame testFrame) {
+		this.testFrame = testFrame;
+	}
+
+	public JTabbedPane getTabbedPane() {
+		return tabbedPane;
+	}
+
+	public void setTabbedPane(JTabbedPane tabbedPane) {
+		this.tabbedPane = tabbedPane;
+	}
+
+	public JPanel getPanelView() {
+		return panelView;
+	}
+
+	public void setPanelView(JPanel panelView) {
+		this.panelView = panelView;
+	}
+
+	public JPanel getPanelFind() {
+		return panelFind;
+	}
+
+	public void setPanelFind(JPanel panelFind) {
+		this.panelFind = panelFind;
+	}
+
+	public JButton getBtnSelectAll() {
+		return btnSelectAll;
+	}
+
+	public void setBtnSelectAll(JButton btnSelectAll) {
+		this.btnSelectAll = btnSelectAll;
+	}
+
+	public JComboBox getComboBoxViewAll() {
+		return comboBoxViewAll;
+	}
+
+	public void setComboBoxViewAll(JComboBox comboBoxViewAll) {
+		this.comboBoxViewAll = comboBoxViewAll;
+	}
+
+	public JTextArea getTextAreaViewAll() {
+		return textAreaViewAll;
+	}
+
+	public void setTextAreaViewAll(JTextArea textAreaViewAll) {
+		this.textAreaViewAll = textAreaViewAll;
+	}
+	
+	public ControllerWS getControllerWS() {
+		return controllerWS;
+	}
+
+	public void setControllerWS(ControllerWS controllerWS) {
+		this.controllerWS = controllerWS;
 	}
 }
