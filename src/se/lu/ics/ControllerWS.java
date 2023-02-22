@@ -52,8 +52,8 @@ public class ControllerWS {
 							ProductCategory [] categories = service.getCategories();
 							
 							for(ProductCategory pc : categories) {
-								System.out.print(pc.getCategoryID());
-								app.getTextAreaViewAll().setText("The ID is: " + pc.getCategoryID());
+								System.out.print(pc.getCategoryID());//TEST
+								app.getTextAreaViewAll().setText("Category ID: " + pc.getCategoryID());
 							}
 							break;
 							
@@ -61,11 +61,42 @@ public class ControllerWS {
 								Customer [] customers = service.getCustomers();
 								
 								for(Customer c : customers) {
-									System.out.print(c.getName());
-									app.getTextAreaViewAll().setText("The ID is: " + c.getName());
+									System.out.print(c.getName());//TEST
+									app.getTextAreaViewAll().setText("Customer Name: " + c.getName());
 
 								}
 								break;
+								
+						case "Products":
+							Product [] products = service.getProducts();
+							
+							for(Product p : products) {
+								System.out.print(p.getProductName());//TEST
+								app.getTextAreaViewAll().setText("The Product Name is: " + p.getProductName());
+
+							}
+							break;
+							
+						
+						case "Orders":
+							Order [] orders = service.getOrders();
+							
+							for(Order o : orders) {
+								System.out.print(o.getOrderID());//TEST
+								app.getTextAreaViewAll().setText("The Order ID is: " + o.getOrderID());
+
+							}
+							break;
+							
+						case "Stores":
+							Store [] stores = service.getStores();
+							
+							for(Store s : stores) {
+								System.out.print(s.getStoreName());//TEST
+								app.getTextAreaViewAll().setText("The Store Name is: " + s.getStoreName());
+
+							}
+							break;
 							
 						
 						
