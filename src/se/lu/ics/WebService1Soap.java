@@ -33,4 +33,29 @@ public interface WebService1Soap extends java.rmi.Remote {
      * Returns a list of all orders
      */
     public se.lu.ics.Order[] getOrders() throws java.rmi.RemoteException;
+
+    /**
+     * Returns all products from chosen category
+     */
+    public se.lu.ics.Product[] getProductsFromCategory(int categoryID) throws java.rmi.RemoteException;
+
+    /**
+     * Returns a customer by ID
+     */
+    public se.lu.ics.Customer getCustomerByID(int customerID) throws java.rmi.RemoteException;
+
+    /**
+     * Returns the product with the highest price
+     */
+    public se.lu.ics.Product getProductPriceHighest() throws java.rmi.RemoteException;
+
+    /**
+     * Returns all orders from a customer
+     */
+    public se.lu.ics.Order[] getOrdersFromCustomer(int customerID) throws java.rmi.RemoteException;
+
+    /**
+     * Returns all orderlines from a order
+     */
+    public se.lu.ics.Orderline[] getOrdersLinesFromOrder(int orderID) throws java.rmi.RemoteException;
 }
