@@ -40,7 +40,7 @@ public class ApplicationWs extends JFrame {
 		testFrame.setVisible(true);
 		
 		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(10, 0, 607, 379);
+		tabbedPane.setBounds(0, 0, 617, 379);
 		testFrame.getContentPane().add(tabbedPane);
 		
 		panelView = new JPanel();
@@ -48,15 +48,15 @@ public class ApplicationWs extends JFrame {
 		panelView.setLayout(null);
 		
 		btnSelectAll = new JButton("SELECT");
-		btnSelectAll.setBounds(163, 166, 89, 23);
+		btnSelectAll.setBounds(224, 317, 89, 23);
 		panelView.add(btnSelectAll);
 		
 		comboBoxViewAll = new JComboBox();
-		comboBoxViewAll.setBounds(140, 133, 131, 22);
+		comboBoxViewAll.setBounds(202, 261, 131, 22);
 		panelView.add(comboBoxViewAll);
 		
 		textAreaViewAll = new JTextArea();
-		textAreaViewAll.setBounds(10, 24, 409, 98);
+		textAreaViewAll.setBounds(10, 81, 592, 169);
 		panelView.add(textAreaViewAll);
 		
 		panelFind = new JPanel();
