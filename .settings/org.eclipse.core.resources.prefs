@@ -1,6 +1,7 @@
 eclipse.preferences.version=1
 encoding//src/se/lu/ics/Customer.java=UTF-8
 encoding//src/se/lu/ics/Order.java=UTF-8
+encoding//src/se/lu/ics/Orderline.java=UTF-8
 encoding//src/se/lu/ics/Product.java=UTF-8
 encoding//src/se/lu/ics/ProductCategory.java=UTF-8
 encoding//src/se/lu/ics/Store.java=UTF-8
