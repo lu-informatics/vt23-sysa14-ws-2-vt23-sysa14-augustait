@@ -44,65 +44,88 @@ public class ControllerWS {
 					
 					WebService1Soap service = new WebService1SoapProxy();
 					String selectedItem = (String)app.getComboBoxViewAll().getSelectedItem();
-					
+				    StringBuilder sb = new StringBuilder();
+
 					try {
 						switch(selectedItem) {
 							
 						case "Product Category":
-							ProductCategory [] categories = service.getCategories();
-							
-							for(ProductCategory pc : categories) {
-								System.out.print(pc.getCategoryID());//TEST
-								app.getTextAreaViewAll().setText("Category ID: " + pc.getCategoryID());
-							}
-							break;
+						    ProductCategory[] categories = service.getCategories();
+						    
+						    sb.append("CATEGORIES INFO: \n\n");
+						    
+						    for (ProductCategory pc : categories) {
+						        sb.append("Category ID: ").append(pc.getCategoryID()).append("\n");
+						        sb.append("Category Name: ").append(pc.getCategoryName()).append("\n\n");
+						    }
+						    app.getTextAreaViewAll().setText(sb.toString());
+						    break;
 							
 						case "Customers":
-								Customer [] customers = service.getCustomers();
-								
-								for(Customer c : customers) {
-									System.out.print(c.getName());//TEST
-									app.getTextAreaViewAll().setText("Customer Name: " + c.getName());
+						    Customer[] customers = service.getCustomers();
+						   
+						    sb.append("CUSTOMERS INFO: \n\n");
 
-								}
-								break;
+						    
+						    for (Customer c : customers) {
+						        sb.append("Customer Name: ").append(c.getName()).append("\n");
+						        sb.append("Customer ID: ").append(c.getCustomerID()).append("\n");
+						        sb.append("Username: ").append(c.getUserName()).append("\n");
+						        sb.append("Address: ").append(c.getAddress()).append("\n");
+						        sb.append("Phone Number: ").append(c.getPhoneNumber()).append("\n");
+						        sb.append("Email: ").append(c.getEmail()).append("\n\n");
+						    }
+						    app.getTextAreaViewAll().setText(sb.toString());
+						    break;
 								
 						case "Products":
-							Product [] products = service.getProducts();
-							
-							for(Product p : products) {
-								System.out.print(p.getProductName());//TEST
-								app.getTextAreaViewAll().setText("The Product Name is: " + p.getProductName());
+							 Product[] products = service.getProducts();
+							    
+							  sb.append("PRODUCTS INFO: \n\n");
 
-							}
-							break;
+							 for (Product p : products) {
+							        sb.append("Product ID: ").append(p.getProductID()).append("\n");
+							        sb.append("Product Name: ").append(p.getProductName()).append("\n");
+							        sb.append("Price: ").append(p.getPrice()).append("\n");
+							        sb.append("Category ID: ").append(p.getCategoryID()).append("\n\n");
+							    }
+							    app.getTextAreaViewAll().setText(sb.toString());
+							    break;
 							
 						
 						case "Orders":
-							Order [] orders = service.getOrders();
-							
-							for(Order o : orders) {
-								System.out.print(o.getOrderID());//TEST
-								app.getTextAreaViewAll().setText("The Order ID is: " + o.getOrderID());
+						    Order[] orders = service.getOrders();
+						    
+						    sb.append("ORDERS INFO: \n\n");
 
-							}
-							break;
+						    
+						    for (Order o : orders) {
+						        sb.append("Order ID: ").append(o.getOrderID()).append("\n");
+						        sb.append("Order Date: ").append(o.getOrderDate()).append("\n");
+						        sb.append("Supermarket ID: ").append(o.getSupermarketID()).append("\n");
+						        sb.append("Customer ID: ").append(o.getCustomerID()).append("\n");
+						        sb.append("Payment Method: ").append(o.getPaymentMethod()).append("\n\n");
+						    }
+						    app.getTextAreaViewAll().setText(sb.toString());
+						    break;
 							
 						case "Stores":
-							Store [] stores = service.getStores();
-							
-							for(Store s : stores) {
-								System.out.print(s.getStoreName());//TEST
-								app.getTextAreaViewAll().setText("The Store Name is: " + s.getStoreName());
+						    Store[] stores = service.getStores();
+						    
+						    sb.append("STORES INFO: \n\n");
 
-							}
-							break;
+						    
+						    for (Store s : stores) {
+						        sb.append("Supermarket ID: ").append(s.getSupermarketID()).append("\n");
+						        sb.append("Region Name: ").append(s.getRegionName()).append("\n");
+						        sb.append("Store Name: ").append(s.getStoreName()).append("\n");
+						        sb.append("City: ").append(s.getCity()).append("\n");
+						        sb.append("Store Address: ").append(s.getStoreAddress()).append("\n\n");
+						    }
+						    app.getTextAreaViewAll().setText(sb.toString());
+						    break;
 							
-						
-						
 						}
-						
-						
 						
 						
 					} catch (RemoteException e1) {

@@ -8,10 +8,17 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JTabbedPane;
 import javax.swing.JComboBox;
 import java.awt.Font;
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JScrollPane;
+import javax.swing.JLabel;
+import java.awt.SystemColor;
+import java.awt.Color;
 
 public class ApplicationWs extends JFrame {
 
@@ -24,7 +31,10 @@ public class ApplicationWs extends JFrame {
 	private JComboBox comboBoxViewAll;
 	private JTextArea textAreaViewAll;
 	private ControllerWS controllerWS;
+	private JLabel lblNewLabel;
 	
+	
+
 	
 
 	public ApplicationWs() {
@@ -56,8 +66,23 @@ public class ApplicationWs extends JFrame {
 		panelView.add(comboBoxViewAll);
 		
 		textAreaViewAll = new JTextArea();
-		textAreaViewAll.setBounds(10, 81, 592, 169);
-		panelView.add(textAreaViewAll);
+		JScrollPane scrollPane = new JScrollPane(textAreaViewAll);
+		scrollPane.setBounds(10, 81, 592, 169);
+		panelView.add(scrollPane);
+		
+		JLabel lblImage = new JLabel("");
+		lblImage.setBounds(58, 0, 185, 79);
+		panelView.add(lblImage);
+		ImageIcon imageIcon = new ImageIcon("C:\\Users\\vmNanna\\Downloads\\Images\\ICA.png");
+		Image image = imageIcon.getImage();
+		Image resizedImage = image.getScaledInstance(180, 90, Image.SCALE_SMOOTH);
+		ImageIcon resizedIcon = new ImageIcon(resizedImage);
+		lblImage.setIcon(resizedIcon);
+		
+		lblNewLabel = new JLabel("Supermarket Server Manager");
+		lblNewLabel.setBackground(new Color(0, 128, 192));
+		lblNewLabel.setBounds(242, 32, 167, 23);
+		panelView.add(lblNewLabel);
 		
 		panelFind = new JPanel();
 		tabbedPane.addTab("Find", null, panelFind, null);
