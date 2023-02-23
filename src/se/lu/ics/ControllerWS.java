@@ -42,7 +42,6 @@ public class ControllerWS {
 			JComboBox comboBoxFind = app.getComboBoxFind();
 
 			comboBoxFind.addItem("Find Products by Category ID");
-			comboBoxFind.addItem("Find Product with Highest Price");
 			comboBoxFind.addItem("Find Order by Customer ID");
 			comboBoxFind.addItem("Find Orderlines by Order ID");
 
@@ -187,16 +186,6 @@ public class ControllerWS {
 						    break;
 						    						
 			
-						case "Find Product with Highest Price":
-							 Product product = service.getProductPriceHighest();
-							    
-							  sb.append("PRODUCTS INFO: \n\n");
-
-							        sb.append("Product Name: ").append(product.getProductName()).append("\n");
-							        sb.append("Price: ").append(product.getPrice()).append("\n");
-							    
-							    app.getTextAreaFind().setText(sb.toString());
-							    break;
 							    
 						case "Find Order by Customer ID":
 						    Order[] orders = service.getOrdersFromCustomer(parsedID);
