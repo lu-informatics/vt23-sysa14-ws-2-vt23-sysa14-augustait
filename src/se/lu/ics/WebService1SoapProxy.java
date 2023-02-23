@@ -102,6 +102,7 @@ public class WebService1SoapProxy implements se.lu.ics.WebService1Soap {
     if (webService1Soap == null)
       _initWebService1SoapProxy();
     return webService1Soap.getOrderLinesFromOrder(orderID);
+
   }
   
   

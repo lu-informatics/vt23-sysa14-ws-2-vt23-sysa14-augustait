@@ -126,11 +126,13 @@ public class WebService1SoapStub extends org.apache.axis.client.Stub implements 
 
         oper = new org.apache.axis.description.OperationDesc();
         oper.setName("GetOrderLinesFromOrder");
+
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://ics.lu.se/", "OrderID"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "int"), int.class, false, false);
         oper.addParameter(param);
         oper.setReturnType(new javax.xml.namespace.QName("http://ics.lu.se/", "ArrayOfOrderline"));
         oper.setReturnClass(se.lu.ics.Orderline[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("http://ics.lu.se/", "GetOrderLinesFromOrderResult"));
+
         param = oper.getReturnParamDesc();
         param.setItemQName(new javax.xml.namespace.QName("http://ics.lu.se/", "Orderline"));
         oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
