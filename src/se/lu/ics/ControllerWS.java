@@ -150,6 +150,7 @@ public class ControllerWS {
 			app.getBtnSelectFind().addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					
+				try {
 					WebService1Soap service = new WebService1SoapProxy();
 					String selectedItems = (String)app.getComboBoxFind().getSelectedItem();
 					
@@ -158,22 +159,29 @@ public class ControllerWS {
 
 				    StringBuilder sb = new StringBuilder();
 
-					try {
+					
 						switch(selectedItems) {
 						
 						case "Find Products by Category ID":
-						    Product[] products = service.getProductsFromCategory(parsedID);
-						    
-						    sb.append("PRODUCTS INFO FOR CATEGORY ID:" + inputID + "\n\n");
-						    
-						    for (Product p : products) {
-						        sb.append("Product ID: ").append(p.getProductID()).append("\n");
-						        sb.append("Product Name: ").append(p.getProductName()).append("\n");
-						        sb.append("Price: ").append(p.getPrice()).append("\n");
-						        sb.append("Category ID: ").append(p.getCategoryID()).append("\n\n");
+							Product[] products = service.getProductsFromCategory(parsedID);
 
-						    }
-						    app.getTextAreaFind().setText(sb.toString());
+							if(products.length == 0) {
+						        sb.append("No products found for category ID ").append(parsedID);
+							    System.out.println("No products for Category ID " + inputID);
+
+							    
+							} else {
+							    sb.append("PRODUCTS INFO FOR CATEGORY ID:" + inputID + "\n\n");
+
+							    for (Product p : products) {
+							        sb.append("Product ID: ").append(p.getProductID()).append("\n");
+							        sb.append("Product Name: ").append(p.getProductName()).append("\n");
+							        sb.append("Price: ").append(p.getPrice()).append("\n");
+							        sb.append("Category ID: ").append(p.getCategoryID()).append("\n\n");
+							    }
+							}
+
+							app.getTextAreaFind().setText(sb.toString());
 						    break;
 						    						
 			
@@ -190,23 +198,28 @@ public class ControllerWS {
 							    
 						case "Find Order by Customer ID":
 						    Order[] orders = service.getOrdersFromCustomer(parsedID);
-						    
-						    sb.append("ORDERS INFO FOR CUSTOMER ID:" + inputID + "\n\n");
-						    
-						    for (Order o : orders) {
-						        sb.append("Order ID: ").append(o.getOrderID()).append("\n");
-						        sb.append("Order Date: ").append(o.getOrderDate()).append("\n");
-						        sb.append("Supermarket ID: ").append(o.getSupermarketID()).append("\n");
-						        sb.append("Customer ID: ").append(o.getCustomerID()).append("\n");
-						        sb.append("Payment Method: ").append(o.getPaymentMethod()).append("\n\n");
+
+						    if(orders.length == 0) {
+						        app.getTextAreaFind().setText("No orders for Customer ID " + inputID);
+						        System.out.println("No orders for Customer ID " + inputID);
+						    } else {
+						        sb.append("ORDERS INFO FOR CUSTOMER ID:" + inputID + "\n\n");
+
+						        for (Order o : orders) {
+						            sb.append("Order ID: ").append(o.getOrderID()).append("\n");
+						            sb.append("Order Date: ").append(o.getOrderDate()).append("\n");
+						            sb.append("Supermarket ID: ").append(o.getSupermarketID()).append("\n");
+						            sb.append("Customer ID: ").append(o.getCustomerID()).append("\n");
+						            sb.append("Payment Method: ").append(o.getPaymentMethod()).append("\n\n");
+						        }
+						        app.getTextAreaFind().setText(sb.toString());
 						    }
-						    app.getTextAreaFind().setText(sb.toString());
 						    break;
 						    
 					 case "Find Orderlines by Order ID":
 					Orderline[] orderlines = service.getOrderLinesFromOrder(parsedID);
 										    
-					sb.append("ORDERLINES INFO: \n\n");
+					sb.append("ORDERLINES INFO FOR ORDER ID:" + inputID + "\n\n");
 
 					for (Orderline o : orderlines) {
 					sb.append("Order ID: ").append(o.getOrderID()).append("\n");
@@ -218,11 +231,15 @@ public class ControllerWS {
 					break;
 					
 						}
+						 
 						
 						
 					} catch (RemoteException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
+					
+					}catch(NumberFormatException ex) {
+						app.getTextAreaFind().setText("Please Enter a valid ID for Order, Customer or Product");
 					}
 				}
 			});
