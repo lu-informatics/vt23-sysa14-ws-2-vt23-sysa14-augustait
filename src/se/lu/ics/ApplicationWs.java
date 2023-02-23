@@ -37,6 +37,7 @@ public class ApplicationWs extends JFrame {
 	private JButton btnSelectFind;
 	private JComboBox comboBoxFind;
 	private JTextArea textAreaFind;
+	private JLabel lblNewLabel_1;
 	
 	
 
@@ -67,13 +68,13 @@ public class ApplicationWs extends JFrame {
 		panelView.add(btnSelectAll);
 		
 		comboBoxViewAll = new JComboBox();
-		comboBoxViewAll.setBounds(202, 261, 131, 22);
+		comboBoxViewAll.setBounds(202, 284, 131, 22);
 		panelView.add(comboBoxViewAll);
 		
 		textAreaViewAll = new JTextArea();
-		JScrollPane scrollPane = new JScrollPane(textAreaViewAll);
-		scrollPane.setBounds(10, 81, 592, 169);
-		panelView.add(scrollPane);
+		JScrollPane scrollPaneView = new JScrollPane(textAreaViewAll);
+		scrollPaneView.setBounds(10, 81, 592, 169);
+		panelView.add(scrollPaneView);
 		
 		JLabel lblImage = new JLabel("");
 		lblImage.setBounds(58, 0, 185, 79);
@@ -85,30 +86,48 @@ public class ApplicationWs extends JFrame {
 		lblImage.setIcon(resizedIcon);
 		
 		lblNewLabel = new JLabel("Supermarket Server Manager");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 23));
 		lblNewLabel.setBackground(new Color(0, 128, 192));
-		lblNewLabel.setBounds(242, 32, 167, 23);
+		lblNewLabel.setBounds(242, 11, 295, 59);
 		panelView.add(lblNewLabel);
+		
+		lblNewLabel_1 = new JLabel("Select a web service method to call");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblNewLabel_1.setBounds(169, 261, 215, 14);
+		panelView.add(lblNewLabel_1);
 		
 		panelFind = new JPanel();
 		tabbedPane.addTab("Find", null, panelFind, null);
 		panelFind.setLayout(null);
 		
-		JTextArea textAreaFind = new JTextArea();
+		textAreaFind = new JTextArea();
+		JScrollPane scrollPaneFind = new JScrollPane(textAreaFind);
 		textAreaFind.setBounds(10, 34, 590, 167);
 		panelFind.add(textAreaFind);
+		panelFind.add(scrollPaneFind);
 		
-		JComboBox comboBoxFind = new JComboBox();
-		comboBoxFind.setBounds(38, 236, 131, 22);
+		comboBoxFind = new JComboBox();
+		comboBoxFind.setBounds(152, 228, 269, 22);
 		panelFind.add(comboBoxFind);
 		
 		btnSelectFind = new JButton("SELECT");
-		btnSelectFind.setBounds(48, 269, 89, 23);
+		btnSelectFind.setBounds(243, 317, 89, 23);
 		panelFind.add(btnSelectFind);
 		
 		textFieldFind = new JTextField();
-		textFieldFind.setBounds(216, 237, 86, 20);
+		textFieldFind.setBounds(182, 286, 208, 20);
 		panelFind.add(textFieldFind);
 		textFieldFind.setColumns(10);
+		
+		JLabel lblNewLabel_2 = new JLabel("Select a web method to call");
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblNewLabel_2.setBounds(208, 212, 171, 14);
+		panelFind.add(lblNewLabel_2);
+		
+		JLabel lblNewLabel_3 = new JLabel("Enter a Order ID, Customer ID or Product ID");
+		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblNewLabel_3.setBounds(162, 261, 259, 14);
+		panelFind.add(lblNewLabel_3);
 	}
 
 	public JTextField getTextFieldFind() {
