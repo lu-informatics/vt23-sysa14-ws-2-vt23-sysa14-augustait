@@ -134,9 +134,100 @@ public class ControllerWS {
 					}
 				}
 			});
-			
-			
-		}
+			JComboBox comboBoxFind = app.getComboBoxFind();
 
-		
+			comboBoxFind.addItem("Find products by category");
+			comboBoxFind.addItem("Find customer by ID");
+			comboBoxFind.addItem("Find product with highest price");
+			comboBoxFind.addItem("Find order placed by customer");
+			comboBoxFind.addItem("Get orderlines from order");
+
+			
+			app.getBtnSelectFind().addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					
+					WebService1Soap service = new WebService1SoapProxy();
+					String selectedItems = (String)app.getComboBoxFind().getSelectedItem();
+				    StringBuilder sb = new StringBuilder();
+
+					try {
+						switch(selectedItems) {
+						
+						case "Find products by category":
+						    Product[] products = service.getProductsFromCategory(0);
+						    
+						    sb.append("PRODUCTS INFO: \n\n");
+						    
+						    for (Product p : products) {
+						        sb.append("Category ID: ").append(p.getCategoryID()).append("\n");
+						        sb.append("Category Name: ").append(p.getProductName()).append("\n\n");
+						    }
+						    app.getTextAreaFind().setText(sb.toString());
+						    break;
+						    
+						case "Find customer by ID":
+						    Customer customer = service.getCustomerByID(0);
+						   
+						    sb.append("CUSTOMERS INFO: \n\n");
+
+						        sb.append("Customer Name: ").append(customer.getName()).append("\n");
+						        sb.append("Customer ID: ").append(customer.getCustomerID()).append("\n");
+						        sb.append("Username: ").append(customer.getUserName()).append("\n");
+						        sb.append("Address: ").append(customer.getAddress()).append("\n");
+						        sb.append("Phone Number: ").append(customer.getPhoneNumber()).append("\n");
+						        sb.append("Email: ").append(customer.getEmail()).append("\n\n");
+						
+						    app.getTextAreaFind().setText(sb.toString());
+						    break;							
+			
+						case "Finod product with highest price":
+							 Product product = service.getProductPriceHighest();
+							    
+							  sb.append("PRODUCTS INFO: \n\n");
+
+							        sb.append("Product Name: ").append(product.getProductName()).append("\n");
+							        sb.append("Price: ").append(product.getPrice()).append("\n");
+							    
+							    app.getTextAreaFind().setText(sb.toString());
+							    break;
+							    
+						case "Find order placed by customer":
+						    Order[] orders = service.getOrdersFromCustomer(0);
+						    
+						    sb.append("ORDERS INFO: \n\n");
+						    
+						    for (Order o : orders) {
+						        sb.append("Order ID: ").append(o.getOrderID()).append("\n");
+						        sb.append("Order Date: ").append(o.getOrderDate()).append("\n");
+						        sb.append("Supermarket ID: ").append(o.getSupermarketID()).append("\n");
+						        sb.append("Customer ID: ").append(o.getCustomerID()).append("\n");
+						        sb.append("Payment Method: ").append(o.getPaymentMethod()).append("\n\n");
+						    }
+						    app.getTextAreaFind().setText(sb.toString());
+						    break;
+						    
+					 case "Get orderlines from order":
+					Orderline[] orderlines = service.getOrderLinesFromOrder(0);
+										    
+					sb.append("ORDERLINES INFO: \n\n");
+
+					for (Orderline o : orderlines) {
+					sb.append("Order ID: ").append(o.getOrderID()).append("\n");
+					sb.append("Product ID: ").append(o.getProductID()).append("\n");
+					sb.append("Orderline number: ").append(o.getOrderlineNumber()).append("\n");
+					sb.append("Quantity: ").append(o.getQuantity()).append("\n");
+					}
+					app.getTextAreaFind().setText(sb.toString());
+					break;
+					
+						}
+						
+						
+					} catch (RemoteException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
+			});
+		}
 }

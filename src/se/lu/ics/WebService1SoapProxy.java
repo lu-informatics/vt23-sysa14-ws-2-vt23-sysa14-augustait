@@ -98,10 +98,11 @@ public class WebService1SoapProxy implements se.lu.ics.WebService1Soap {
     return webService1Soap.getOrdersFromCustomer(customerID);
   }
   
-  public se.lu.ics.Orderline[] getOrdersLinesFromOrder(int orderID) throws java.rmi.RemoteException{
+  public se.lu.ics.Orderline[] getOrderLinesFromOrder(int orderID) throws java.rmi.RemoteException{
     if (webService1Soap == null)
       _initWebService1SoapProxy();
-    return webService1Soap.getOrdersLinesFromOrder(orderID);
+    return webService1Soap.getOrderLinesFromOrder(orderID);
+
   }
   
   

@@ -19,6 +19,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JLabel;
 import java.awt.SystemColor;
 import java.awt.Color;
+import javax.swing.JTextField;
 
 public class ApplicationWs extends JFrame {
 
@@ -32,6 +33,10 @@ public class ApplicationWs extends JFrame {
 	private JTextArea textAreaViewAll;
 	private ControllerWS controllerWS;
 	private JLabel lblNewLabel;
+	private JTextField textFieldFind;
+	private JButton btnSelectFind;
+	private JComboBox comboBoxFind;
+	private JTextArea textAreaFind;
 	
 	
 
@@ -87,8 +92,56 @@ public class ApplicationWs extends JFrame {
 		panelFind = new JPanel();
 		tabbedPane.addTab("Find", null, panelFind, null);
 		panelFind.setLayout(null);
+		
+		JTextArea textAreaFind = new JTextArea();
+		textAreaFind.setBounds(10, 34, 590, 167);
+		panelFind.add(textAreaFind);
+		
+		JComboBox comboBoxFind = new JComboBox();
+		comboBoxFind.setBounds(38, 236, 131, 22);
+		panelFind.add(comboBoxFind);
+		
+		btnSelectFind = new JButton("SELECT");
+		btnSelectFind.setBounds(48, 269, 89, 23);
+		panelFind.add(btnSelectFind);
+		
+		textFieldFind = new JTextField();
+		textFieldFind.setBounds(216, 237, 86, 20);
+		panelFind.add(textFieldFind);
+		textFieldFind.setColumns(10);
 	}
 
+	public JTextField getTextFieldFind() {
+		return textFieldFind;
+	}
+
+	public void setTextFieldFind(JTextField textFieldFind) {
+		this.textFieldFind = textFieldFind;
+	}
+	public JButton getBtnSelectFind() {
+		return btnSelectFind;
+	}
+
+	public void setBtnSelectFind(JButton btnSelectFind) {
+		this.btnSelectFind = btnSelectFind;
+	}
+
+	public JComboBox getComboBoxFind() {
+		return comboBoxFind;
+	}
+
+	public void setComboBoxFind(JComboBox comboBoxFind) {
+		this.comboBoxFind = comboBoxFind;
+	}
+
+	public JTextArea getTextAreaFind() {
+		return textAreaFind;
+	}
+
+	public void setTextAreaFind(JTextArea textAreaFind) {
+		this.textAreaFind = textAreaFind;
+	}
+	
 	public JFrame getTestFrame() {
 		return testFrame;
 	}
