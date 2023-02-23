@@ -216,19 +216,24 @@ public class ControllerWS {
 						    }
 						    break;
 						    
-					 case "Find Orderlines by Order ID":
-					Orderline[] orderlines = service.getOrderLinesFromOrder(parsedID);
-										    
-					sb.append("ORDERLINES INFO FOR ORDER ID:" + inputID + "\n\n");
+						case "Find Orderlines by Order ID":
+						    Orderline[] orderlines = service.getOrdersLinesFromOrder(parsedID);
 
-					for (Orderline o : orderlines) {
-					sb.append("Order ID: ").append(o.getOrderID()).append("\n");
-					sb.append("Product ID: ").append(o.getProductID()).append("\n");
-					sb.append("Orderline number: ").append(o.getOrderlineNumber()).append("\n");
-					sb.append("Quantity: ").append(o.getQuantity()).append("\n");
-					}
-					app.getTextAreaFind().setText(sb.toString());
-					break;
+						    if(orderlines.length == 0) {
+						        app.getTextAreaFind().setText("No orderlines for Order ID " + inputID);
+						        System.out.println("No orderlines for Order ID " + inputID);
+						    } else {
+						        sb.append("ORDERLINES INFO FOR ORDER ID:" + inputID + "\n\n");
+
+						        for (Orderline o : orderlines) {
+						            sb.append("Order ID: ").append(o.getOrderID()).append("\n");
+						            sb.append("Product ID: ").append(o.getProductID()).append("\n");
+						            sb.append("Orderline number: ").append(o.getOrderlineNumber()).append("\n");
+						            sb.append("Quantity: ").append(o.getQuantity()).append("\n");
+						        }
+						        app.getTextAreaFind().setText(sb.toString());
+						    }
+						    break;
 					
 						}
 						 

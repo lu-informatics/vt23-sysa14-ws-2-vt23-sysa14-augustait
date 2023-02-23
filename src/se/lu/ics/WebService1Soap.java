@@ -57,6 +57,5 @@ public interface WebService1Soap extends java.rmi.Remote {
     /**
      * Returns all orderlines from a order
      */
-    public se.lu.ics.Orderline[] getOrderLinesFromOrder(int orderID) throws java.rmi.RemoteException;
-
+    public se.lu.ics.Orderline[] getOrdersLinesFromOrder(int orderID) throws java.rmi.RemoteException;
 }
