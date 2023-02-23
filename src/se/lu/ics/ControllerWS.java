@@ -37,8 +37,16 @@ public class ControllerWS {
 			comboBoxViewAll.addItem("Orders");
 			comboBoxViewAll.addItem("Products");
 			comboBoxViewAll.addItem("Stores");
+			
+			JComboBox comboBoxFind = app.getComboBoxFind();
+
+			comboBoxFind.addItem("Find Products by Category ID");
+			comboBoxFind.addItem("Find Product with Highest Price");
+			comboBoxFind.addItem("Find Order by Customer ID");
+			comboBoxFind.addItem("Find Orderlines by Order ID");
 
 			
+			//5 ENTITIES
 			app.getBtnSelectAll().addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					
@@ -134,53 +142,42 @@ public class ControllerWS {
 					}
 				}
 			});
-			JComboBox comboBoxFind = app.getComboBoxFind();
-
-			comboBoxFind.addItem("Find products by category");
-			comboBoxFind.addItem("Find customer by ID");
-			comboBoxFind.addItem("Find product with highest price");
-			comboBoxFind.addItem("Find order placed by customer");
-			comboBoxFind.addItem("Get orderlines from order");
-
 			
+			
+			
+
+			//BINARY RELATIONSHIPS
 			app.getBtnSelectFind().addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					
 					WebService1Soap service = new WebService1SoapProxy();
 					String selectedItems = (String)app.getComboBoxFind().getSelectedItem();
+					
+					String inputID = app.getTextFieldFind().getText();
+					int parsedID = Integer.parseInt(inputID);
+
 				    StringBuilder sb = new StringBuilder();
 
 					try {
 						switch(selectedItems) {
 						
-						case "Find products by category":
-						    Product[] products = service.getProductsFromCategory(0);
+						case "Find Products by Category ID":
+						    Product[] products = service.getProductsFromCategory(parsedID);
 						    
-						    sb.append("PRODUCTS INFO: \n\n");
+						    sb.append("PRODUCTS INFO FOR CATEGORY ID:" + inputID + "\n\n");
 						    
 						    for (Product p : products) {
-						        sb.append("Category ID: ").append(p.getCategoryID()).append("\n");
-						        sb.append("Category Name: ").append(p.getProductName()).append("\n\n");
+						        sb.append("Product ID: ").append(p.getProductID()).append("\n");
+						        sb.append("Product Name: ").append(p.getProductName()).append("\n");
+						        sb.append("Price: ").append(p.getPrice()).append("\n");
+						        sb.append("Category ID: ").append(p.getCategoryID()).append("\n\n");
+
 						    }
 						    app.getTextAreaFind().setText(sb.toString());
 						    break;
-						    
-						case "Find customer by ID":
-						    Customer customer = service.getCustomerByID(0);
-						   
-						    sb.append("CUSTOMERS INFO: \n\n");
-
-						        sb.append("Customer Name: ").append(customer.getName()).append("\n");
-						        sb.append("Customer ID: ").append(customer.getCustomerID()).append("\n");
-						        sb.append("Username: ").append(customer.getUserName()).append("\n");
-						        sb.append("Address: ").append(customer.getAddress()).append("\n");
-						        sb.append("Phone Number: ").append(customer.getPhoneNumber()).append("\n");
-						        sb.append("Email: ").append(customer.getEmail()).append("\n\n");
-						
-						    app.getTextAreaFind().setText(sb.toString());
-						    break;							
+						    						
 			
-						case "Find product with highest price":
+						case "Find Product with Highest Price":
 							 Product product = service.getProductPriceHighest();
 							    
 							  sb.append("PRODUCTS INFO: \n\n");
@@ -191,10 +188,10 @@ public class ControllerWS {
 							    app.getTextAreaFind().setText(sb.toString());
 							    break;
 							    
-						case "Find order placed by customer":
-						    Order[] orders = service.getOrdersFromCustomer(0);
+						case "Find Order by Customer ID":
+						    Order[] orders = service.getOrdersFromCustomer(parsedID);
 						    
-						    sb.append("ORDERS INFO: \n\n");
+						    sb.append("ORDERS INFO FOR CUSTOMER ID:" + inputID + "\n\n");
 						    
 						    for (Order o : orders) {
 						        sb.append("Order ID: ").append(o.getOrderID()).append("\n");
@@ -206,8 +203,8 @@ public class ControllerWS {
 						    app.getTextAreaFind().setText(sb.toString());
 						    break;
 						    
-					 case "Get orderlines from order":
-					Orderline[] orderlines = service.getOrderLinesFromOrder(0);
+					 case "Find Orderlines by Order ID":
+					Orderline[] orderlines = service.getOrderLinesFromOrder(parsedID);
 										    
 					sb.append("ORDERLINES INFO: \n\n");
 

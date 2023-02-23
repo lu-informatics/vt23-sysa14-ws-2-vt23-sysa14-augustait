@@ -102,8 +102,7 @@ public class ApplicationWs extends JFrame {
 		
 		textAreaFind = new JTextArea();
 		JScrollPane scrollPaneFind = new JScrollPane(textAreaFind);
-		textAreaFind.setBounds(10, 34, 590, 167);
-		panelFind.add(textAreaFind);
+		scrollPaneFind.setBounds(10, 34, 590, 167); // set the bounds of the scroll pane
 		panelFind.add(scrollPaneFind);
 		
 		comboBoxFind = new JComboBox();
