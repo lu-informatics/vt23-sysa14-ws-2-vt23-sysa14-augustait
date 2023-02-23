@@ -166,8 +166,7 @@ public class ControllerWS {
 							Product[] products = service.getProductsFromCategory(parsedID);
 
 							if(products.length == 0) {
-						        sb.append("No products found for category ID ").append(parsedID);
-							    System.out.println("No products for Category ID " + inputID);
+						        sb.append("No products found for Category ID: ").append(parsedID);
 
 							    
 							} else {
@@ -201,7 +200,7 @@ public class ControllerWS {
 
 						    if(orders.length == 0) {
 						        app.getTextAreaFind().setText("No orders for Customer ID " + inputID);
-						        System.out.println("No orders for Customer ID " + inputID);
+						        System.out.println("No orders for Customer ID: " + inputID);
 						    } else {
 						        sb.append("ORDERS INFO FOR CUSTOMER ID:" + inputID + "\n\n");
 
@@ -220,7 +219,7 @@ public class ControllerWS {
 						    Orderline[] orderlines = service.getOrdersLinesFromOrder(parsedID);
 
 						    if(orderlines.length == 0) {
-						        app.getTextAreaFind().setText("No orderlines for Order ID " + inputID);
+						        app.getTextAreaFind().setText("No orderlines for Order ID: " + inputID);
 						        System.out.println("No orderlines for Order ID " + inputID);
 						    } else {
 						        sb.append("ORDERLINES INFO FOR ORDER ID:" + inputID + "\n\n");
