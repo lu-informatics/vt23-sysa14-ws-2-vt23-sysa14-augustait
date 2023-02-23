@@ -74,5 +74,35 @@ public class WebService1SoapProxy implements se.lu.ics.WebService1Soap {
     return webService1Soap.getOrders();
   }
   
+  public se.lu.ics.Product[] getProductsFromCategory(int categoryID) throws java.rmi.RemoteException{
+    if (webService1Soap == null)
+      _initWebService1SoapProxy();
+    return webService1Soap.getProductsFromCategory(categoryID);
+  }
+  
+  public se.lu.ics.Customer getCustomerByID(int customerID) throws java.rmi.RemoteException{
+    if (webService1Soap == null)
+      _initWebService1SoapProxy();
+    return webService1Soap.getCustomerByID(customerID);
+  }
+  
+  public se.lu.ics.Product getProductPriceHighest() throws java.rmi.RemoteException{
+    if (webService1Soap == null)
+      _initWebService1SoapProxy();
+    return webService1Soap.getProductPriceHighest();
+  }
+  
+  public se.lu.ics.Order[] getOrdersFromCustomer(int customerID) throws java.rmi.RemoteException{
+    if (webService1Soap == null)
+      _initWebService1SoapProxy();
+    return webService1Soap.getOrdersFromCustomer(customerID);
+  }
+  
+  public se.lu.ics.Orderline[] getOrderLinesFromOrder(int orderID) throws java.rmi.RemoteException{
+    if (webService1Soap == null)
+      _initWebService1SoapProxy();
+    return webService1Soap.getOrderLinesFromOrder(orderID);
+  }
+  
   
 }
