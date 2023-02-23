@@ -180,7 +180,7 @@ public class ControllerWS {
 						    app.getTextAreaFind().setText(sb.toString());
 						    break;							
 			
-						case "Finod product with highest price":
+						case "Find product with highest price":
 							 Product product = service.getProductPriceHighest();
 							    
 							  sb.append("PRODUCTS INFO: \n\n");
