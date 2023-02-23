@@ -6,6 +6,7 @@ import java.rmi.RemoteException;
 
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.xml.rpc.soap.SOAPFaultException;
 
 public class ControllerWS {
 	
@@ -139,7 +140,9 @@ public class ControllerWS {
 					} catch (RemoteException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
-					}
+					}catch (SOAPFaultException ex) {
+					app.getTextAreaFind().setText("An error occurred while retrieving data. Please try again later");
+					}	
 				}
 			});
 			
@@ -166,7 +169,7 @@ public class ControllerWS {
 							Product[] products = service.getProductsFromCategory(parsedID);
 
 							if(products.length == 0) {
-						        sb.append("No products found for Category ID: ").append(parsedID);
+						        sb.append("Enter another ID, No products found for Category ID: ").append(parsedID);
 
 							    
 							} else {
@@ -199,8 +202,8 @@ public class ControllerWS {
 						    Order[] orders = service.getOrdersFromCustomer(parsedID);
 
 						    if(orders.length == 0) {
-						        app.getTextAreaFind().setText("No orders for Customer ID " + inputID);
-						        System.out.println("No orders for Customer ID: " + inputID);
+						        app.getTextAreaFind().setText("Enter another ID, No orders for Customer ID: " + inputID);
+						        
 						    } else {
 						        sb.append("ORDERS INFO FOR CUSTOMER ID:" + inputID + "\n\n");
 
@@ -219,8 +222,8 @@ public class ControllerWS {
 						    Orderline[] orderlines = service.getOrdersLinesFromOrder(parsedID);
 
 						    if(orderlines.length == 0) {
-						        app.getTextAreaFind().setText("No orderlines for Order ID: " + inputID);
-						        System.out.println("No orderlines for Order ID " + inputID);
+						        app.getTextAreaFind().setText("Enter another ID, No orderlines for Order ID: " + inputID);
+						        
 						    } else {
 						        sb.append("ORDERLINES INFO FOR ORDER ID:" + inputID + "\n\n");
 
@@ -244,6 +247,10 @@ public class ControllerWS {
 					
 					}catch(NumberFormatException ex) {
 						app.getTextAreaFind().setText("Please Enter a valid ID for Order, Customer or Product");
+					
+					}catch (SOAPFaultException ex) {
+						app.getTextAreaFind().setText("An error occurred while retrieving data. Please try again later");
+
 					}
 				}
 			});
