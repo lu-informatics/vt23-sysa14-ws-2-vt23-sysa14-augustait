@@ -3,7 +3,6 @@ package se.lu.ics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.rmi.RemoteException;
-
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.xml.rpc.soap.SOAPFaultException;
