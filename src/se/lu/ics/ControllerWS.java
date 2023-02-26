@@ -139,7 +139,8 @@ public class ControllerWS {
 						
 					} catch (RemoteException e1) {
 						// TODO Auto-generated catch block
-						e1.printStackTrace();
+						app.getTextAreaFind().setText("An error occured when connecting with the server, please try again later");
+
 					}catch (SOAPFaultException ex) {
 					app.getTextAreaFind().setText("An error occurred while retrieving data. Please try again later");
 					}	
@@ -233,6 +234,8 @@ public class ControllerWS {
 					} catch (RemoteException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
+						app.getTextAreaFind().setText("An error occured when connecting with the server, please try again later");
+
 					
 					}catch(NumberFormatException ex) {
 						app.getTextAreaFind().setText("Please Enter a valid ID for Order, Customer or Product");
