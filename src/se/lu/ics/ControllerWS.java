@@ -43,13 +43,15 @@ public class ControllerWS {
 			comboBoxFind.addItem("Find Products by Category ID");
 			comboBoxFind.addItem("Find Order by Customer ID");
 			comboBoxFind.addItem("Find Orderlines by Order ID");
+			
+			WebService1Soap service = new WebService1SoapProxy();
+
 
 			
 			//5 ENTITIES
 			app.getBtnSelectAll().addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					
-					WebService1Soap service = new WebService1SoapProxy();
 					String selectedItem = (String)app.getComboBoxViewAll().getSelectedItem();
 				    StringBuilder sb = new StringBuilder();
 
@@ -152,7 +154,6 @@ public class ControllerWS {
 				public void actionPerformed(ActionEvent e) {
 					
 				try {
-					WebService1Soap service = new WebService1SoapProxy();
 					String selectedItems = (String)app.getComboBoxFind().getSelectedItem();
 					
 					String inputID = app.getTextFieldFind().getText();
