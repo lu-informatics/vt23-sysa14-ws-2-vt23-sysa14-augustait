@@ -125,12 +125,12 @@ public class WebService1SoapStub extends org.apache.axis.client.Stub implements 
         _operations[8] = oper;
 
         oper = new org.apache.axis.description.OperationDesc();
-        oper.setName("GetOrdersLinesFromOrder");
+        oper.setName("GetOrderLinesFromOrder");
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://ics.lu.se/", "OrderID"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "int"), int.class, false, false);
         oper.addParameter(param);
         oper.setReturnType(new javax.xml.namespace.QName("http://ics.lu.se/", "ArrayOfOrderline"));
         oper.setReturnClass(se.lu.ics.Orderline[].class);
-        oper.setReturnQName(new javax.xml.namespace.QName("http://ics.lu.se/", "GetOrdersLinesFromOrderResult"));
+        oper.setReturnQName(new javax.xml.namespace.QName("http://ics.lu.se/", "GetOrderLinesFromOrderResult"));
         param = oper.getReturnParamDesc();
         param.setItemQName(new javax.xml.namespace.QName("http://ics.lu.se/", "Orderline"));
         oper.setStyle(org.apache.axis.constants.Style.WRAPPED);
@@ -636,19 +636,19 @@ public class WebService1SoapStub extends org.apache.axis.client.Stub implements 
 }
     }
 
-    public se.lu.ics.Orderline[] getOrdersLinesFromOrder(int orderID) throws java.rmi.RemoteException {
+    public se.lu.ics.Orderline[] getOrderLinesFromOrder(int orderID) throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
         }
         org.apache.axis.client.Call _call = createCall();
         _call.setOperation(_operations[9]);
         _call.setUseSOAPAction(true);
-        _call.setSOAPActionURI("http://ics.lu.se/GetOrdersLinesFromOrder");
+        _call.setSOAPActionURI("http://ics.lu.se/GetOrderLinesFromOrder");
         _call.setEncodingStyle(null);
         _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
         _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://ics.lu.se/", "GetOrdersLinesFromOrder"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://ics.lu.se/", "GetOrderLinesFromOrder"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
