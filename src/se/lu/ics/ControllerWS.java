@@ -209,7 +209,7 @@ public class ControllerWS {
 						    break;
 						    
 						case "Find Orderlines by Order ID":
-						    Orderline[] orderlines = service.getOrdersLinesFromOrder(parsedID);
+						    Orderline[] orderlines = service.getOrderLinesFromOrder(parsedID);
 
 						    if(orderlines.length == 0) {
 						        app.getTextAreaFind().setText("Enter another ID, No orderlines for Order ID: " + inputID);
